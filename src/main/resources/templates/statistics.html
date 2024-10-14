@@ -173,10 +173,10 @@
                     <th:block th:each="entry : ${statistics}">
                         <tr>
                             <td th:text="${entry.timestamp}"></td>
-                            <td th:text="${entry.uploadedFileName}"></td>
+                            <td><a th:href="@{path/to/download/${entry.uploadedFileName}}" th:text="${entry.uploadedFileName}"></a></td>
                             <td th:text="${entry.logCodes}"></td>
                             <td th:text="${entry.resultingFileName}"></td>
-                            <td th:text="${entry.downloadedException != null ? entry.downloadedException : 'No Exception Downloaded'}"></td>
+                            <td><a th:if="${entry.downloadedException != null}" th:href="@{${entry.downloadedException}}" th:text="${entry.downloadedException}"></a><span th:if="${entry.downloadedException == null}">No Exception Downloaded</span></td>
                             <td th:text="${entry.status}"></td>
                             <td th:text="${entry.accessExceptionCount}"></td>
                             <td th:text="${entry.cloudClientExceptionCount}"></td>
